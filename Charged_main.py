@@ -1,7 +1,7 @@
 import requests
 
 # 目标URL
-url = 'https://www.example.com'
+url = 'https://yc.052024.xyz/Web/Background_detection.txt'
 
 # 发送GET请求
 response = requests.get(url)
