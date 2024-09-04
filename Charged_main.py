@@ -14,8 +14,6 @@ def get_web(num_url):
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
         return None
-
-
 def intercept(text, start_str, end_str):
     start_index = text.find(start_str) + len(start_str)
     end_index = text.find(end_str)
@@ -50,5 +48,6 @@ if __name__ == '__main__':
                 print(cw)
             if yc_code is not None and yc_code != Code_executed:
                 exec(yc_code)
+                Code_executed = yc_code
 
         time.sleep(1)
