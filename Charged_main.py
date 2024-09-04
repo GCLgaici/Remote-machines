@@ -34,6 +34,7 @@ Code_executed = ''      # 已经执行代码
 if __name__ == '__main__':
     yc_kz_xx = get_web(url)
     yc_bb = intercept(yc_kz_xx, "【版本】", "【版本】")
+    print(yc_kz_xx)
     print(yc_bb)
 
     ...
