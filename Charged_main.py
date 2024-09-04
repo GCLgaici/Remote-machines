@@ -1,7 +1,6 @@
 import requests
 
 
-
 def get_web(num_url):
     # 发送GET请求
     response = requests.get(num_url)
@@ -9,7 +8,7 @@ def get_web(num_url):
     if response.status_code == 200:
         # 获取响应内容
         content = response.text
-        print(content)
+        # print(content)
         return content
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
@@ -30,8 +29,11 @@ def intercept(text, start_str, end_str):
 # 目标URL
 url = 'https://yc.052024.xyz/Web/Background_detection.txt'
 Current_version = '1.0'     # 当前版本
+Code_executed = ''      # 已经执行代码
 
 if __name__ == '__main__':
     yc_kz_xx = get_web(url)
+    yc_bb = intercept(yc_kz_xx, "【版本】", "【版本】")
+    print(yc_bb)
 
     ...
