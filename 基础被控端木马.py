@@ -1,10 +1,22 @@
 """
-
+mm
 """
 import json
 import requests
 import platform
 
+
+class Function:
+    def __init__(self):
+        self.number_of_executions = 0
+        ...
+    def Connect_Network(self):
+        self.number_of_executions += 1
+        try:
+            requests.get('https://yc.052024.xyz/net.txt', timeout=5)
+            return True
+        except requests.ConnectionError:
+            return False
 class WeChat_push:
     """
     微信测试号推送被控信息
@@ -61,6 +73,7 @@ class WeChat_push:
         url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}'.format(access_token)
         print(requests.post(url, json.dumps(body)).text)
         ...
+
 
 class Main:
     def __init__(self):
