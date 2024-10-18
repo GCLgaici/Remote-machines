@@ -1,7 +1,9 @@
 """
 mm
 """
+import os
 import json
+import time
 import requests
 import platform
 
@@ -77,6 +79,7 @@ class WeChat_push:
 
 class Main:
     def __init__(self):
+        self.fun = Function()
         self.wechat_push = WeChat_push()
         # 初始化配置
         self.wechat_push.appID = 'wxfe87182bd1371294'
@@ -86,18 +89,26 @@ class Main:
         self.system = platform.system()
         self.sys_Version = platform.release()
         self.running = True
+
+        self.startup = False    # 程序启动首次联网执行  /True=已执行
         ...
 
     def Run(self):
-        try:
-            print(self.system)
-            self.wechat_push.Alleged_information("程序（启动-联网）成功")
-        except Exception as t:
-            print(t)
-            ...
+        print(self.fun.Connect_Network())
         while self.running:
+            if self.fun.Connect_Network():
+                if not self.startup:    # 程序启动连接到网络执行一次（python代码
+                    if os.name == 'nt':  # win相同获取用户名
+                        xt_username = os.getenv('USERNAME')
+                    else:
+                        xt_username = os.getenv('USER')
 
-            ...
+                    self.wechat_push.Alleged_information(f'{xt_username}已联网启动+初始代码执行')
+                    print(os.name)
+                    self.startup = True
+                    
+
+            time.sleep(3)
 
 if __name__ == '__main__':
     m = Main()
