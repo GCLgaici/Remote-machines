@@ -2,5 +2,5 @@
 代码有变化就执行
 """
 print('sb')
-open('drq.txt', 'w').write('哈哈木马')
+self.main.wechat_push.Alleged_information(f'{self.main.sys_username}代码成功执行')
 
