@@ -129,11 +129,13 @@ class Main:
                             start_new_thread(self.fun.run_code, (qq.text, ))
                             self.Current_Code = qq.text
                         else:
-                            print('code一样，等待新执行')
+                            print('The code is the same, waiting for new execution')# print('code一样，等待新执行')
                 except Exception as bc:
                     print(bc)
+            else:
+                print('wu_net')     # 没有网络
 
-            time.sleep(3)
+            time.sleep(8)
 
 if __name__ == '__main__':
     m = Main()
