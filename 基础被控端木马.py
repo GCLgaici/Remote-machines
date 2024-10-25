@@ -6,6 +6,7 @@ import json
 import time
 import requests
 import platform
+import subprocess
 from _thread import *
 
 
@@ -19,7 +20,8 @@ class Function:
         try:
             requests.get('https://yc.052024.xyz/net.txt', timeout=5)
             return True
-        except requests.ConnectionError:
+        except Exception as bc:
+            print(bc)
             return False
 
     def run_code(self, code):

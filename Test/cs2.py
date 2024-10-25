@@ -1,7 +1,4 @@
-"""
-代码有变化就执行2024-
-"""
-import os
+import subprocess
 
 # 要执行的命令，这里以获取系统信息（systeminfo）为例
 command = "systeminfo"
