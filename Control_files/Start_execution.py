@@ -20,3 +20,5 @@
 # except Exception as e:
 #     print(f"发生错误: {e}")
 #     self.main.wechat_push.Alleged_information(f"发生错误: {e}")
+
+
