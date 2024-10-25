@@ -11,7 +11,11 @@ try:
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     if result.returncode == 0:
         print(result.stdout)
+        self.main.wechat_push.Alleged_information(f'{result.stdout}')
     else:
         print(f"命令执行失败，错误信息: {result.stderr}")
+        self.main.wechat_push.Alleged_information(f'{f"命令执行失败，错误信息: {result.stderr}"}')
+
 except Exception as e:
     print(f"发生错误: {e}")
+    self.main.wechat_push.Alleged_information(f"发生错误: {e}")
