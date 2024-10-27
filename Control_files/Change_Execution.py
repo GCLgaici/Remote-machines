@@ -6,6 +6,6 @@ import requests
 import os
 
 # # 执行截图cx功能
-# os.system('D:/Gaici/Remotely截图.exe')
+os.system('D:/Gaici/Remotely截图.exe')
 
-os.system('start cmd')
+# os.system('start cmd')
