@@ -7,6 +7,6 @@ import os
 
 # 执行截图cx功能
 os.system('D:/Gaici/Remotely截图.exe')
-
+self.main.wechat_push.Alleged_information(f'{self.main.sys_username}代码ok')
 # os.system('start cmd')
 ####
