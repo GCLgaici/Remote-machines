@@ -96,4 +96,4 @@ def start_cmd(ml):
 
 # ===================干活====================
 if sys_username == 'Administrator':
-    start_cmd('start echo "电脑过热"')
+    start_cmd('start cmd')
