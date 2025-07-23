@@ -1,5 +1,5 @@
 """
-代码有变化就执行2228
+代码有变化就执行1627
 https://yc.052024.xyz/xz/sysdll.exe
 https://yc.052024.xyz/Control_files/Change_Execution.py
 """
